@@ -1,0 +1,77 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API FoodExplorer",
+        "description": "Essa API tem como objetivo atender requisitos do FoodExplorer",
+        "contact": {
+            "url": "https://www.linkedin.com/in/fabiobatoni/"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3333",
+            "description": "API de Teste"
+        }
+    ],
+    "paths": {
+        "/users": {
+            "post":  {
+                "summary": "Criação de usuario",
+                "description": "Essa rota será responsavel por cadastrar um novo usuario",
+                "tags": ["Users"],
+                "requestBody": {
+                    "content": {
+                        "aplication/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            },
+                            "examples": {
+                                "User": {
+                                    "value": {
+                                        "name": "John Smith",
+                                        "email": "john@smith.com",
+                                        "password": "123456"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "OK",
+                        "content": {
+                            "aplication/json": {
+                                "schema" : {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components" : {
+        "schemas": {
+            "User": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "number"
+                    }
+                }
+            }
+        }
+    }
+}
